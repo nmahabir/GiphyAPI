@@ -51,12 +51,13 @@ $(document).ready(function() {
           $("#animalImages").prepend(animalDiv);
           $(".gif").on("click", function() {
             var state = $(this).attr("data-state");
+            console.log(state);
             if (state === "still") {
               $(this).attr("src", $(this).attr("data-animate"));
               $(this).attr("data-state", "animate");
             }
             if (state === "animate") {
-              $(this).attr("src", $(this).attr("data-state"));
+              $(this).attr("src", $(this).attr("data-still"));
               $(this).attr("data-state", "still");
             }
           });
