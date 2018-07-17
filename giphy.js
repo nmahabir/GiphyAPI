@@ -36,13 +36,36 @@ $(document).ready(function() {
           var p = $("<p>").text("Rating: " + results[i].rating);
           var animalImage = $("<img>");
           animalImage.attr("src", results[i].images.fixed_height.url);
+          console.log(results[i].images.fixed_height.url);
+          // onclick for images to start and stop
+          animalImage.attr("class", "gif");
+          animalImage.attr("data-state", "animate");
+          animalImage.attr(
+            "data-still",
+            results[i].images.fixed_height_still.url
+          );
+          animalImage.attr("data-animate", results[i].images.fixed_height.url);
+
           animalDiv.append(p);
           animalDiv.append(animalImage);
           $("#animalImages").prepend(animalDiv);
+          $(".gif").on("click", function() {
+            var state = $(this).attr("data-state");
+            if (state === "still") {
+              $(this).attr("src", $(this).attr("data-animate"));
+              $(this).attr("data-state", "animate");
+            }
+            if (state === "animate") {
+              $(this).attr("src", $(this).attr("data-state"));
+              $(this).attr("data-state", "still");
+            }
+          });
         }
       });
     });
   }
+
+  giphy();
 
   $("#search").on("click", function() {
     console.log($("#animal").val());
