@@ -11,9 +11,8 @@ $(document).ready(function() {
           animalButtons[i] +
           "</button>"
       );
-    }
-  }
-
+    };
+  };
   buttonCreator();
 
   function giphy() {
@@ -67,6 +66,7 @@ $(document).ready(function() {
   }
 
   giphy();
+  buttonCreator();
 
   $("#search").on("click", function() {
     console.log($("#animal").val());
