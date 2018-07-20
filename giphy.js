@@ -61,7 +61,8 @@ $(document).ready(function() {
             }
           });
         }
-      });
+      }).catch(function(error){
+        console.log("Oops! There's an error somewhere")});
     });
   }
 
